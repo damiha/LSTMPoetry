@@ -1,0 +1,36 @@
+Architecture Info
+
+def __init__(self, n_chars,  n_embed, block_size, hidden_size = 512, num_layers = 3, enable_cuda=True):
+        
+        super().__init__()
+        
+        # we add one additional row for the empty character (when data is missing)
+        self.W = nn.Parameter(torch.randn(n_chars, n_embed))
+        
+        self.hidden_size = hidden_size
+        self.num_layers = num_layers
+        
+        self.lstm = nn.LSTM(input_size = n_embed, hidden_size = self.hidden_size, num_layers = num_layers)
+        self.hidden_to_output = nn.Linear(self.hidden_size, n_chars)
+        
+        self.block_size = block_size
+        
+        self.optim = None
+        self.lr = None
+        
+        self.criterion = nn.CrossEntropyLoss()
+        
+        # for plotting the learning curves
+        self.train_loss_per_epoch = []
+        self.val_loss_per_epoch = []
+        
+        self.device = torch.device("cuda" if torch.cuda.is_available() and enable_cuda else "cpu")
+        print(f"device = {self.device}")
+        
+        self.to(self.device)
+        
+ block_size = 128
+ 
+ len(chars) = 103
+ 
+ lstm_model = PytorchLSTMModel(n_chars = len(chars), n_embed = 32, block_size = block_size, enable_cuda = enable_cuda)

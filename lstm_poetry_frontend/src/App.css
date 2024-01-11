@@ -1,0 +1,44 @@
+.App {
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.info-box {
+  background-color: lightgray;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+
+.input-group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.input-group > * {
+  flex: 1;
+}
+
+.model-selector, .text-input, .generate-button {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.generated-text-view {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  height: 500px;
+  overflow-y: auto;
+  margin-top: 20px;
+}
+
